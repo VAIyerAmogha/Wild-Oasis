@@ -4,17 +4,14 @@ import Row from "../ui/Row";
 import { getCabins } from "../services/apiCabins";
 import CabinTable from "../features/cabins/CabinTable";
 import AddCabin from "../features/cabins/AddCabin";
+import CabinTableoperations from "../features/cabins/CabinTableoperations";
 
 function Cabins() {
-  // useEffect(function () {
-  //   getCabins().then();
-  // }, []);
-
   return (
     <>
       <Row type="horizontal">
         <Heading as="h1">All Cabins</Heading>
-        <p>Filter/Sort</p>
+        <CabinTableoperations />
       </Row>
       <Row>
         <CabinTable />

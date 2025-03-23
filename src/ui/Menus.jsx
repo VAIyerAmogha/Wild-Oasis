@@ -84,7 +84,7 @@ function Menus({ children }) {
 }
 
 function Toggle({ id }) {
-  const { openId, open, close, setPosition } = useContext(MenusContext);
+  const { openId, close, open, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
     const rect = e.target.closest("button").getBoundingClientRect();
@@ -108,6 +108,7 @@ function List({ id, children }) {
   const ref = useOutsideClick(close);
 
   if (openId !== id) return null;
+
   return createPortal(
     <StyledList position={position} ref={ref}>
       {children}

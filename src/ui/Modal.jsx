@@ -46,6 +46,9 @@ const Button = styled.button`
   & svg {
     width: 2.4rem;
     height: 2.4rem;
+    /* Sometimes we need both */
+    /* fill: var(--color-grey-500);
+    stroke: var(--color-grey-500); */
     color: var(--color-grey-500);
   }
 `;
@@ -56,7 +59,7 @@ function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 
   const close = () => setOpenName("");
-  const open = (name) => setOpenName(name);
+  const open = setOpenName;
 
   return (
     <ModalContext.Provider value={{ openName, close, open }}>
@@ -83,6 +86,7 @@ function Window({ children, name }) {
         <Button onClick={close}>
           <HiXMark />
         </Button>
+
         <div>{cloneElement(children, { onCloseModal: close })}</div>
       </StyledModal>
     </Overlay>,

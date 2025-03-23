@@ -7,7 +7,7 @@ export function useSettings() {
     error,
     data: settings,
   } = useQuery({
-    queryKey: [`settings`],
+    queryKey: ["settings"],
     queryFn: getSettings,
   });
 

@@ -11,10 +11,9 @@ function CabinTable() {
   const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
-  if (!cabins.length) return <Empty resourceName="Cabins" />;
-  // if (error) return <div>Error loading cabins</div>;
+  if (!cabins.length) return <Empty resourceName="cabins" />;
 
-  // FILTER
+  // 1) FILTER
   const filterValue = searchParams.get("discount") || "all";
 
   let filteredCabins;
@@ -24,17 +23,13 @@ function CabinTable() {
   if (filterValue === "with-discount")
     filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
 
-  // SORT
+  // 2) SORT
   const sortBy = searchParams.get("sortBy") || "startDate-asc";
   const [field, direction] = sortBy.split("-");
   const modifier = direction === "asc" ? 1 : -1;
-
-  const sortedCabins = filteredCabins.sort((a, b) => {
-    if (field === "capacity") {
-      return (a.capacity - b.capacity) * modifier;
-    }
-    return (a[field] - b[field]) * modifier;
-  });
+  const sortedCabins = filteredCabins.sort(
+    (a, b) => (a[field] - b[field]) * modifier
+  );
 
   return (
     <Menus>
@@ -49,6 +44,8 @@ function CabinTable() {
         </Table.Header>
 
         <Table.Body
+          // data={cabins}
+          // data={filteredCabins}
           data={sortedCabins}
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />

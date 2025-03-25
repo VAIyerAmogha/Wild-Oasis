@@ -37,6 +37,8 @@ function CheckinBooking() {
 
   if (isLoading || isLoadingSettings) return <Spinner />;
 
+  if (!booking) return <div>Booking not found</div>;
+
   const {
     id: bookingId,
     guests,

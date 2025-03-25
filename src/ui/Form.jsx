@@ -1,10 +1,18 @@
 import styled, { css } from "styled-components";
 
 const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px; /* Adjust the max-width as needed */
+  margin: 0 auto; /* Center the form horizontally */
+
   ${(props) =>
     props.type === "regular" &&
     css`
-      padding: 2.4rem 4rem;
+      padding: 3rem 5rem; /* Increase padding */
 
       /* Box */
       background-color: var(--color-grey-0);
@@ -19,7 +27,7 @@ const Form = styled.form`
     `}
     
   overflow: hidden;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 Form.defaultProps = {
